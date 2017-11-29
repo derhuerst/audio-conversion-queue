@@ -4,10 +4,15 @@
 	"version": "0.1.0",
 	"main": "index.js",
 	"files": [
-		"index.js"
+		"index.js",
+		"simple-src-to-dest.js"
 	],
 	"keywords": [
-		"todo"
+		"audio",
+		"convert",
+		"queue",
+		"service",
+		"ffmpeg"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/audio-conversion-queue",
@@ -18,5 +23,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"queue": "^4.4.2",
+		"shell-escape-tag": "^1.1.0"
 	}
 }
