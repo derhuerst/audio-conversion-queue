@@ -1,0 +1,22 @@
+{
+	"name": "audio-conversion-queue",
+	"description": "Convert audio files temporarily, on the fly.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"todo"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/audio-conversion-queue",
+	"repository": "derhuerst/audio-conversion-queue",
+	"bugs": "https://github.com/derhuerst/audio-conversion-queue/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	}
+}
