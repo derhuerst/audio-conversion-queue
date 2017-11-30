@@ -18,8 +18,23 @@ npm install audio-conversion-queue
 ## Usage
 
 ```js
-todo
+const createConversionQueue = require('audio-conversion-queue')
+
+const queue = createConversionQueue()
+
+queue.convert('/path/to/audio.m4a', (err, dest, purge) => {
+	if (err) return console.error(err)
+
+	console.info('the converted MP3 file is at', dest)
+	// do something with the file…
+	// when you don't need it anymore, delete it:
+	purge((err) => {
+		if (err) console.error(err)
+	})
+})
 ```
+
+Optionally, you can pass a function into `createConversionQueue` that converts the path of a source file (e.g. `/path/to/audio.m4a`) into the path of the MP3 destination file (e.g. `audio-4f2f.mp3`). You could also use the hash of the source file. The default function only appends a random number.
 
 
 ## Contributing
