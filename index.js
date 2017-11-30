@@ -7,11 +7,13 @@ const shell = require('shell-escape-tag').default
 const {exec} = require('child_process')
 const fs = require('fs')
 
+const simpleSrcToDest = require('./simple-src-to-dest')
+
 const dir = os.tmpdir()
 const noop = () => {}
 
 // todo: use a cache, with dest as key
-const createConversionQueue = (srcToDest) => {
+const createConversionQueue = (srcToDest = simpleSrcToDest) => {
 	const q = createQueue({autostart: true})
 
 	const convert = (src, converted) => {
@@ -40,7 +42,7 @@ const createConversionQueue = (srcToDest) => {
 		})
 	}
 
-	return convert
+	return {convert}
 }
 
 module.exports = createConversionQueue
