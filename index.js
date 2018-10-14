@@ -3,7 +3,7 @@
 const os = require('os')
 const createQueue = require('queue')
 const path = require('path')
-const shell = require('shell-escape-tag').default
+const shell = require('any-shell-escape')
 const {exec} = require('child_process')
 const fs = require('fs')
 
@@ -27,7 +27,12 @@ const createConversionQueue = (srcToDest = simpleSrcToDest) => {
 
 			const task = (taskDone) => {
 				// todo: make the command customisable
-				const cmd = shell `ffmpeg -y -v error -i ${src} -vn -acodec mp3 -format mp3 ${dest}`
+				const cmd = shell([
+					'ffmpeg', '-y', '-v', 'error',
+					'-i', src,
+					'-vn', '-acodec', 'mp3', '-format', 'mp3',
+					dest
+				])
 				exec(cmd, (err) => {
 					if (err) {
 						taskDone(err)

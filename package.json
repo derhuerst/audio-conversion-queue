@@ -23,8 +23,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"any-shell-escape": "^0.1.1",
 		"crypto-random-string": "^1.0.0",
-		"queue": "^4.4.2",
-		"shell-escape-tag": "^1.1.0"
+		"queue": "^4.4.2"
 	}
 }
