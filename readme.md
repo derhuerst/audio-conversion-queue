@@ -35,7 +35,16 @@ queue.convert('/path/to/audio.m4a', (err, dest, purge) => {
 })
 ```
 
-Optionally, you can pass a function into `createConversionQueue` that converts the path of a source file (e.g. `/path/to/audio.m4a`) into the path of the MP3 destination file (e.g. `audio-4f2f.mp3`). You could also use the hash of the source file. The default function only appends a random number.
+
+## API
+
+```js
+const queue = createConversionQueue(srcToDest = defaultSrcToDest, ffmpegArgs = ['-acodec', 'mp3', '-format', 'mp3'])
+```
+
+Pass a custom `createConversionQueue(src, cb)` function that, given the source path `src` (e.g. `/path/to/audio.m4a`), calls `cb` with the path of the MP3 destination file (e.g. `/path/to/audio-4f2f.mp3`). You could also use the hash of the source file.
+
+Pass an array of strings for `ffmpegArgs` to customize the conversion. Refer to the [`ffmpeg` docs](https://ffmpeg.org/ffmpeg.html) for details.
 
 
 ## Contributing

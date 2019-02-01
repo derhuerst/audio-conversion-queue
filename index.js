@@ -12,8 +12,17 @@ const simpleSrcToDest = require('./simple-src-to-dest')
 const dir = os.tmpdir()
 const noop = () => {}
 
+const defaultArgs = [
+	'-acodec', 'mp3', '-format', 'mp3'
+]
+
 // todo: use a cache, with dest as key
-const createConversionQueue = (srcToDest = simpleSrcToDest) => {
+const createConversionQueue = (srcToDest = simpleSrcToDest, ffmpegArgs = defaultArgs) => {
+	if (Array.isArray(srcToDest)) {
+		ffmpegArgs = srcToDest
+		srcToDest = simpleSrcToDest
+	}
+
 	const q = createQueue({autostart: true})
 
 	const convert = (src, converted) => {
@@ -26,11 +35,10 @@ const createConversionQueue = (srcToDest = simpleSrcToDest) => {
 			}
 
 			const task = (taskDone) => {
-				// todo: make the command customisable
 				const cmd = shell([
 					'ffmpeg', '-y', '-v', 'error',
 					'-i', src,
-					'-vn', '-acodec', 'mp3', '-format', 'mp3',
+					'-vn', ...ffmpegArgs,
 					dest
 				])
 				exec(cmd, (err) => {
