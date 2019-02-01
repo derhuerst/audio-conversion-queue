@@ -1,7 +1,7 @@
 {
 	"name": "audio-conversion-queue",
 	"description": "Convert audio files temporarily, on the fly.",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -25,6 +25,6 @@
 	"dependencies": {
 		"any-shell-escape": "^0.1.1",
 		"crypto-random-string": "^1.0.0",
-		"queue": "^4.4.2"
+		"queue": "^5.0.0"
 	}
 }
